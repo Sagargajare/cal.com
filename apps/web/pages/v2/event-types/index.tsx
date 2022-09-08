@@ -1,3 +1,4 @@
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { UserPlan } from "@prisma/client";
 import { Trans } from "next-i18next";
 import Head from "next/head";
@@ -208,10 +209,10 @@ export const EventTypeList = ({ group, groupIndex, readOnly, types }: EventTypeL
       setNativeShare(false);
     }
   }, []);
-
+  const [parent] = useAutoAnimate<HTMLUListElement>();
   return (
     <div className="mb-16 flex overflow-hidden rounded-md border border-gray-200 bg-white">
-      <ul className="w-full divide-y divide-neutral-200" data-testid="event-types">
+      <ul className="static w-full divide-y divide-neutral-200" data-testid="event-types" ref={parent}>
         {types.map((type, index) => {
           const embedLink = `${group.profile.slug}/${type.slug}`;
           const calLink = `${CAL_URL}/${embedLink}`;
