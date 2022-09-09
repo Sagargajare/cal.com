@@ -206,6 +206,7 @@ function EventTypeSingleLayout({
               size="icon"
               StartIcon={Icon.FiTrash}
               combined
+              tooltip={t("delete")}
               disabled={!hasPermsToDelete}
               onClick={() => setDeleteDialogOpen(true)}
             />
@@ -251,11 +252,11 @@ function EventTypeSingleLayout({
         </div>
       }>
       <ClientSuspense fallback={<Loader />}>
-        <div className="mt-4 flex flex-col xl:flex-row xl:space-x-8">
+        <div className="-mt-2 flex flex-col xl:flex-row xl:space-x-8">
           <div className="hidden xl:block">
             <VerticalTabs tabs={EventTypeTabs} sticky />
           </div>
-          <div className="relative left-0 right-0 -mx-6 w-[calc(100%+40px)] p-2 md:mx-0 md:p-0 xl:hidden">
+          <div className="p-2 md:mx-0 md:p-0 xl:hidden">
             <HorizontalTabs tabs={EventTypeTabs} />
           </div>
           <div className="w-full ltr:mr-2 rtl:ml-2">
